@@ -17,8 +17,13 @@ const returnService = {
   price: "30 peças de ouro",
 }
 
+const allProducts = [
+  createdProduct,
+];
+
 export default {
   newProduct,
   createdProduct,
   returnService,
+  allProducts,
 }

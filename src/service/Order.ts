@@ -14,8 +14,6 @@ const getAll = async (): Promise<ServiceResponseOrder<OrderWithProductIds[]>> =>
     productIds: dataValues.productIds?.map((product) => product.id) || [],
   }));
 
-  console.log(data);
-  
   return { status: 'SUCCESSFUL', data };
 };
 

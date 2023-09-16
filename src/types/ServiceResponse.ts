@@ -1,6 +1,7 @@
 import { ProductInputtableTypes } from '../database/models/product.model';
+import { UserInputtableTypes } from '../database/models/user.model';
 
-export type ServiceResponseStatus = 'SUCCESSFUL' | 'CREATED';
+export type ServiceResponseStatus = 'SUCCESSFUL' | 'CREATED' | 'UNAUTHORIZED';
 
 export type ServiceResponseProduct = {
   status: ServiceResponseStatus,
@@ -11,4 +12,9 @@ export type ServiceResponseProduct = {
 export type ServiceResponseOrder<G> = {
   status: ServiceResponseStatus,
   data: { message: string } | G
+};
+
+export type ServiceResponseUser = {
+  status: ServiceResponseStatus,
+  data: { message: string } | UserInputtableTypes | { token: string }
 };

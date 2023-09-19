@@ -7,7 +7,7 @@ if (!secret) {
   throw new Error('MISSING_JWT_SECRET');
 }
 
-const authMiddleware: RequestHandler = (req, res, next) => {
+const authMiddleware: RequestHandler = async (req, res, next) => {
   const { authorization } = req.headers;
   
   if (!authorization) {

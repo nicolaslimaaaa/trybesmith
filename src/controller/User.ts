@@ -1,8 +1,8 @@
-import { Request, Response } from 'express';
+import { RequestHandler } from 'express';
 import UserService from '../service/User';
 import mapStatusCode from '../utils/mapStatusCode';
 
-const login = async (req: Request, res: Response): Promise<Response> => {
+const login: RequestHandler = async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {

@@ -1,11 +1,12 @@
-import { Request, Response, NextFunction } from 'express';
+import { RequestHandler } from 'express';
 
-const validateInputsUser = async (req: Request, res: Response, next: NextFunction) => {
+const validateInputsUser: RequestHandler = async (req, res, next) => {
   const { username, password } = req.body;
   
   if (username === '' || password === '') {
     return res.status(400).json({ message: '"username" and "password" are required' });
   }
+  
   next();
 };
 

@@ -1,8 +1,8 @@
-import { Request, Response } from 'express';
+import { RequestHandler } from 'express';
 import OrderService from '../service/Order';
 import mapStatusCode from '../utils/mapStatusCode';
 
-const getAll = async (req: Request, res: Response): Promise<Response> => {
+const getAll: RequestHandler = async (req, res) => {
   const { status, data } = await OrderService.getAll();
 
   return res.status(mapStatusCode(status)).json(data);

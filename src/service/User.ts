@@ -18,13 +18,13 @@ const login = async (userData: UserData): Promise<ServiceResponseUser> => {
   if (!userExist) {
     return unauthorizedResponse;
   }
-
+  
   const isValidPassword = await bcrypt.compare(userData.password, userExist.dataValues.password);
   
   if (!isValidPassword) {
     return unauthorizedResponse;
   }
-
+  
   const token = jwt.sign({
     id: userExist.dataValues.id,
     username: userExist.dataValues.username,

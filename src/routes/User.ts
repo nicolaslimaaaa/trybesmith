@@ -5,6 +5,11 @@ import authMiddleware from '../middlewares/authMiddleware';
 
 const userRouter = Router();
 
-userRouter.post('/', authMiddleware, validateInputsUser, UserController.login);
+userRouter.post(
+  '/',
+  validateInputsUser,
+  authMiddleware,
+  UserController.login,
+);
 
 export default userRouter;

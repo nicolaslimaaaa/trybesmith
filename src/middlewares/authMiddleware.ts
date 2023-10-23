@@ -11,10 +11,10 @@ const authMiddleware: RequestHandler = async (req, res, next) => {
   const { authorization } = req.headers;
   
   if (!authorization) {
-    return res.status(401).json({ message: 'Token faltando' });
+    return res.status(401).json({ message: 'Username or password invalid' });
   }
   
-  const token = authorization?.split(' ')[1];
+  const token = authorization.split(' ')[1];
   
   if (!token) {
     return res.status(401).json({ message: 'Token inválido' });
@@ -22,6 +22,7 @@ const authMiddleware: RequestHandler = async (req, res, next) => {
     
   try {
     jwt.verify(token, secret);
+    
     next();
   } catch (err) {
     res.status(401).json({ message: 'Token não verificado' });
@@ -30,6 +31,4 @@ const authMiddleware: RequestHandler = async (req, res, next) => {
   next();
 };
 
-export default {
-  authMiddleware,
-};
+export default authMiddleware;
